@@ -6,7 +6,8 @@ namespace A2SDD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //just testing out using github
+            Console.WriteLine("Hello World! Let's see if github will work for us!");
         }
     }
 }
