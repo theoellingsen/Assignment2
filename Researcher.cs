@@ -23,5 +23,13 @@ namespace A2SDD
 
         public string photo { get; set; }
 
+
+
+        Position getCurrentJob(Researcher r)
+        {
+            Position p = 
+            return p;
+        }
+
     }
 }
