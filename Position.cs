@@ -13,28 +13,28 @@ namespace A2SDD
 
         String Title(Position p)
         {
-            return "Code to return string title";
+            return ToTitle(p.Level);
         }
 
         String ToTitle(Level l)
         {
             if(l.CompareTo("A") == 0)
             {
-                return "A";
+                return "Postdoc";
             } else if  (l.CompareTo("B") == 0) {
-                return "B";
+                return "Lecturer";
             }
             else if (l.CompareTo("C") == 0)
             {
-                return "C";
+                return "Senior Lecturer";
             }
             else if (l.CompareTo("D") == 0)
             {
-                return "D";
+                return "Associate Professor";
             }
             else if (l.CompareTo("E") == 0)
             {
-                return "E";
+                return "Professor";
             }
             return "NULL";
         }

@@ -7,27 +7,28 @@ namespace A2SDD
 
     class Researcher
     { 
-        public int ID { get; set; }
+        private int ID { get; set; }
 
-        public string givenName { get; set; }
+        public string GivenName { get; set; }
 
-        public string familyName { get; set; }
+        public string FamilyName { get; set; }
 
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        public string school { get; set; }
+        public string School { get; set; }
 
-        public string campus { get; set; }
+        public string Campus { get; set; }
 
-        public string email { get; set; }
+        public string Email { get; set; }
 
-        public string photo { get; set; }
+        public string Photo { get; set; }
 
 
 
         Position getCurrentJob(Researcher r)
         {
-            Position p = 
+            Position p;
+            //TODO
             return p;
         }
 
