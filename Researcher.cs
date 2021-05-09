@@ -7,7 +7,7 @@ namespace A2SDD
 
     class Researcher
     { 
-        private int ID { get; set; }
+        public int ID { get; set; }
 
         public string GivenName { get; set; }
 
