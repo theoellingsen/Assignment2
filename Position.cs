@@ -4,24 +4,35 @@ using System.Text;
 
 namespace A2SDD
 {
-    enum Level {A, B, C, D, E}
+    enum Level { A, B, C, D, E }
     class Position
     {
         public Level Level { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         String Title(Position p)
         {
             return ToTitle(p.Level);
         }
 
+        /// <summary>
+        /// Takes the level of the researcher and returns their title string.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
         String ToTitle(Level l)
         {
-            if(l.CompareTo("A") == 0)
+            if (l.CompareTo("A") == 0)
             {
                 return "Postdoc";
-            } else if  (l.CompareTo("B") == 0) {
+            }
+            else if (l.CompareTo("B") == 0)
+            {
                 return "Lecturer";
             }
             else if (l.CompareTo("C") == 0)
@@ -39,6 +50,6 @@ namespace A2SDD
             return "NULL";
         }
 
-       
+
     }
 }

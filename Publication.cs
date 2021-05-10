@@ -4,8 +4,9 @@ using System.Text;
 
 namespace A2SDD
 {
+    //ESSENTIAL
 
-    enum PublicationType { Conference, Journal, Other}
+    enum PublicationType { Conference, Journal, Other }
     class Publication
     {
         public String DOI { get; set; }
@@ -22,6 +23,7 @@ namespace A2SDD
 
             return DateTime.Compare(Current, p.Year);
         }
-        
+
+        /// Filter Controler
     }
 }

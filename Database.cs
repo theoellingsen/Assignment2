@@ -9,7 +9,7 @@ using MySql.Data.Types;
 
 namespace A2SDD
 {
-
+    //SHOULD BE ABSTRACT CLASS
     //FROM TUTORIAL WEEK 8, LOTS NEEDS TO BE CHANGED TO ADAPT TO A2
     abstract class Database
     {
@@ -43,7 +43,7 @@ namespace A2SDD
         //For step 2.2 in Week 8 tutorial
         public static List<Researcher> LoadAll()
         {
-            List<Researcher> staff = new List<Researcher>();
+            List<Researcher> researchers = new List<Researcher>();
 
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
@@ -53,12 +53,18 @@ namespace A2SDD
                 conn.Open();
 
                 MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    //TODO, Read in
-                    staff.Add(new Researcher { ID = rdr.GetInt32(0) };
+                    staff.Add(new Researcher
+                    {
+                        ID = rdr.GetInt32(0),
+                        GivenName = rdr.GetString(2),
+                        FamilyName = rdr.GetString(3),
+                        Title = rdr.GetString(4)
+                    });
                 }
             }
             catch (MySqlException e)
@@ -80,10 +86,15 @@ namespace A2SDD
             return staff;
         }
 
-        
-        public static List<TrainingSession> LoadTrainingSessions(int id)
+        /// <summary>
+        /// Filter for publications
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Filtered List of publications</returns>
+
+        public static List<Publications> LoadPublications(int id)
         {
-            List<TrainingSession> work = new List<TrainingSession>();
+            List<Publications> filtered = new List<Publications>();
 
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
@@ -96,17 +107,21 @@ namespace A2SDD
                                                     "from publication as pub, researcher_publication as respub " +
                                                     "where pub.doi=respub.doi and researcher_id=?id", conn);
 
+
                 cmd.Parameters.AddWithValue("id", id);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    work.Add(new TrainingSession
+                    filtered.Add(new Publication
                     {
-                        Title = rdr.GetString(0),
-                        Year = rdr.GetInt32(1),
-                        Mode = ParseEnum<Mode>(rdr.GetString(2)),
-                        Certified = rdr.GetDateTime(3)
+                        DOI = rdr.GetString(0),
+                        Title = rdr.GetString(1),
+                        Authors = rdr.GetString(2),
+                        Year = rdr.GetDateTime(3),
+                        Type = ParseEnum<Type>(rdr.GetString(4)),
+                        CiteAs = rdr.GetString(5),
+                        Available = rdr.GetDateTime(6)
                     });
                 }
             }
@@ -126,7 +141,7 @@ namespace A2SDD
                 }
             }
 
-            return work;
+            return filtered;
         }
 
         //Optional part of step 2.3.4 in Week 8 tutorial illustrating that some answers can be obtained by directly querying the database.

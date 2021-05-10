@@ -4,6 +4,7 @@ using System.Text;
 
 namespace A2SDD
 {
+    //ESSENTIAL
     class Staff
     {
         float ThreeYearAverage(Researcher r)
