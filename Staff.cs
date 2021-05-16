@@ -5,18 +5,48 @@ using System.Text;
 namespace A2SDD
 {
     //ESSENTIAL
-    class Staff
+    class Staff : Researcher
     {
-        float ThreeYearAverage(Researcher r)
+        private static enum PublicationLevel
         {
-            //TODO, Calculate three year average
-            return 1;
+            A = 5,
+            B = 10,
+            C = 20,
+            D = 32,
+            E = 40,
         }
 
-        float Performance(Researcher r)
+        private PublicationLevel Level;
+
+        public Staff(PublicationLevel level)
         {
-            //TODO, calculate performance
-            return 1;
+            Level = level;
+        }
+
+        public static float ThreeYearAverage()
+        {
+            // Initiate database object (will be replaced with PublicationController at later date)
+            Database db = new Database();
+
+            // Create list of publications from given researcher
+            List<Publication> publications = new List<Publication>(db.LoadPublications(ID));
+
+            // Select the publications less than three years old
+            var selected = from publications
+                            where (DateTime.Today - selected.Year).Years <= 3
+                            select selected;
+
+            // Create list pf publications from selected
+            List<Publication> lastThree = new List<Publication>(selected);
+
+            // Return average over three years
+            return lastThree.Count() / 3;
+        }
+
+        public static float Performance()
+        {
+            // Performance is three year average divided by performance level
+            return ThreeYearAverage() /  Level * 10.;
         }
     }
 }

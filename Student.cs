@@ -4,8 +4,9 @@ using System.Text;
 
 namespace A2SDD
 {
-    class Student
+    class Student : Researcher
     {
-        public String degree;
+        public string Degree {  get; set; }
+        public string Supervisor { get; set; }
     }
 }
