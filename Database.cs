@@ -40,7 +40,7 @@ namespace A2SDD
             return conn;
         }
 
-        //For step 2.2 in Week 8 tutorial
+
         public static List<Researcher> LoadAll()
         {
             List<Researcher> researchers = new List<Researcher>();
@@ -58,7 +58,7 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
-                    staff.Add(new Researcher
+                    researchers.Add(new Researcher
                     {
                         ID = rdr.GetInt32(0),
                         GivenName = rdr.GetString(2),
@@ -92,9 +92,9 @@ namespace A2SDD
         /// <param name="id"></param>
         /// <returns>Filtered List of publications</returns>
 
-        public static List<Publications> LoadPublications(int id)
+        public static List<Publication> LoadPublications(int id)
         {
-            List<Publications> filtered = new List<Publications>();
+            List<Publication> filtered = new List<Publication>();
 
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
