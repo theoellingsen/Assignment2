@@ -41,7 +41,52 @@ namespace A2SDD
         }
 
 
-        public static List<Researcher> LoadAll()
+        public static List<Researcher> LoadReseacherListView()
+        {
+            List<Researcher> researchers = new List<Researcher>();
+
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    researchers.Add(new Researcher
+                    {
+                        ID = rdr.GetInt32(0),
+                        GivenName = rdr.GetString(2),
+                        FamilyName = rdr.GetString(3),
+                        Title = rdr.GetString(4)
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return researchers;
+        }
+
+        public static List<Researcher> LoadReseacherDeatailsView()
         {
             List<Researcher> researchers = new List<Researcher>();
 

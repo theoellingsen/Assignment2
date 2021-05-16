@@ -7,7 +7,7 @@ namespace A2SDD
     //ESSENTIAL
     class Staff : Researcher
     {
-        private static enum PublicationLevel
+        private enum PublicationLevel
         {
             A = 5,
             B = 10,
@@ -46,7 +46,7 @@ namespace A2SDD
         public static float Performance(int ID)
         {
             // Performance is three year average divided by performance level
-            return ThreeYearAverage(int ID) /  Level * 10.;
+            return ThreeYearAverage(ID) /  Level * 10.;
         }
     }
 }
