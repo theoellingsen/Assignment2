@@ -23,7 +23,7 @@ namespace A2SDD
             Level = level;
         }
 
-        public static float ThreeYearAverage()
+        public static float ThreeYearAverage(int ID)
         {
             // Initiate database object (will be replaced with PublicationController at later date)
             Database db = new Database();
@@ -43,10 +43,10 @@ namespace A2SDD
             return lastThree.Count() / 3;
         }
 
-        public static float Performance()
+        public static float Performance(int ID)
         {
             // Performance is three year average divided by performance level
-            return ThreeYearAverage() /  Level * 10.;
+            return ThreeYearAverage(int ID) /  Level * 10.;
         }
     }
 }
