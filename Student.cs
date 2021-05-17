@@ -7,6 +7,5 @@ namespace A2SDD
     class Student : Researcher
     {
         public string Degree {  get; set; }
-        public string Supervisor { get; set; }
     }
 }

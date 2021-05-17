@@ -4,62 +4,72 @@ using System.Text;
 
 namespace A2SDD
 {
-    //ESSENTIAL
-
+    public enum Campus { Hobart, Launceston, CradleCoast }
     class Researcher
     {
         public int ID { get; set; }
 
-        public string GivenName { get; set; }
+        public Type Type { get; set; }
 
-        public string FamilyName { get; set; }
+        public String GivenName { get; set; }
 
-        public string Title { get; set; }
+        public String FamilyName { get; set; }
 
-        public string School { get; set; }
+        public String Title { get; set; }
 
-        public string Campus { get; set; }
+        public String School { get; set; }
 
-        public string Email { get; set; }
+        public String Unit { get; set; }
 
-        public string Photo { get; set; }
+        public Campus Campus { get; set; }
+
+        public String Email { get; set; }
+
+        public String Photo { get; set; }
+
+        public List<Position> Positions { get; set; }
+
+        public List<Publication> Publications { get; set; }
 
 
 
-        Position getCurrentJob(Researcher r)
+        Position CurrentJob(Researcher r)
         {
-            //TODO
-            Position p;
-            return p;
+            return r.Positions[0];
         }
 
         String CurrentJobTitle(Researcher r)
         {
-            //TODO
-            return "Current Job Title";
+            return r.Positions[0].Title(Positions[0]);
         }
 
         DateTime CurrentJobStart(Researcher r)
         {
-            //TODO
-            DateTime today = DateTime.Today;
-            return today;
+            return r.Positions[0].Start;
         }
 
         Position GetEarliestJob(Researcher r)
         {
-            //TODO
-            Position p;
-            return p;
+            int length;
+            length = Positions.Count;
+
+            return r.Positions[length];
         }
 
         DateTime EarliestStart(Researcher r)
         {
-            //TODO
-            return DateTime.Now;
+            Position p = GetEarliestJob(r);
+            return p.Start;
         }
 
-        // float ten
-
+        float Tenure(Researcher r)
+        {
+            DateTime tenure = EarliestStart(r);
+            return tenure.CompareTo(DateTime.Now);
+        }
+        int PublicationsCount(Researcher r)
+        {
+            return r.Publications.Count;
+        }
     }
 }

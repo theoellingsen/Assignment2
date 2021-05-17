@@ -5,7 +5,7 @@ using System.Text;
 namespace A2SDD
 {
     enum Level { A, B, C, D, E }
-    class Position
+    class Position : Researcher
     {
         public Level Level { get; set; }
         public DateTime Start { get; set; }
@@ -15,7 +15,7 @@ namespace A2SDD
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        String Title(Position p)
+        public String Title(Position p)
         {
             return ToTitle(p.Level);
         }
@@ -25,7 +25,7 @@ namespace A2SDD
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        String ToTitle(Level l)
+        public String ToTitle(Level l)
         {
             if (l.CompareTo("A") == 0)
             {

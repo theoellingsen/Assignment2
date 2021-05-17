@@ -16,13 +16,9 @@ namespace A2SDD
             E = 40,
         }
 
-        private PublicationLevel Level;
+        private PublicationLevel Level { get; set; }
 
-        public Staff(PublicationLevel level)
-        {
-            Level = level;
-        }
-
+        /*
         public static float ThreeYearAverage(int ID)
         {
             // Initiate database object (will be replaced with PublicationController at later date)
@@ -48,5 +44,6 @@ namespace A2SDD
             // Performance is three year average divided by performance level
             return ThreeYearAverage(ID) /  Level * 10.;
         }
+        */
     }
 }
