@@ -88,27 +88,26 @@ namespace A2SDD
 
         public static List<Researcher> LoadReseacherDetailsView(Researcher r)
         {
-            List<Researcher> researchers = new List<Researcher>();
-
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
+
 
             try
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select title, year, type, available " +
-                                                    "from researcher as pub, researcher_publication as respub " +
-                                                    "where pub.doi=respub.doi and researcher_id=?id", conn););
+                MySqlCommand cmd = new MySqlCommand("select unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start " +
+                                                    "from researcher " +
+                                                    "where resercher_id=?id", conn););
 
 
 
-                cmd.Parameters.AddWithValue("id", id);
+                cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    researchers.Add(new Researcher
+                    r.Add()
                     {
                         ID = rdr.GetInt32(0),
                         GivenName = rdr.GetString(2),
