@@ -86,7 +86,7 @@ namespace A2SDD
             return researchers;
         }
 
-        public static List<Researcher> LoadReseacherDeatailsView()
+        public static List<Researcher> LoadReseacherDetailsView(Researcher r)
         {
             List<Researcher> researchers = new List<Researcher>();
 
@@ -97,8 +97,13 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select title, year, type, available " +
+                                                    "from researcher as pub, researcher_publication as respub " +
+                                                    "where pub.doi=respub.doi and researcher_id=?id", conn););
 
+
+
+                cmd.Parameters.AddWithValue("id", id);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
