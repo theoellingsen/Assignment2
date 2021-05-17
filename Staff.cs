@@ -18,10 +18,10 @@ namespace A2SDD
 
         private PublicationLevel Level { get; set; }
 
-        /*
+        
         public static float ThreeYearAverage(int ID)
         {
-            // Initiate database object (will be replaced with PublicationController at later date)
+           /* // Initiate database object (will be replaced with PublicationController at later date)
             Database db = new Database();
 
             // Create list of publications from given researcher
@@ -34,16 +34,16 @@ namespace A2SDD
 
             // Create list pf publications from selected
             List<Publication> lastThree = new List<Publication>(selected);
-
+            
             // Return average over three years
-            return lastThree.Count() / 3;
+            return lastThree.Count() / 3; */
         }
 
-        public static float Performance(int ID)
+        public static float Performance(Researcher r)
         {
             // Performance is three year average divided by performance level
-            return ThreeYearAverage(ID) /  Level * 10.;
+            return ThreeYearAverage(r.ID) /  r.Positions[0].Level * 10;
         }
-        */
+        
     }
 }

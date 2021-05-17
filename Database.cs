@@ -9,8 +9,7 @@ using MySql.Data.Types;
 
 namespace A2SDD
 {
-    //SHOULD BE ABSTRACT CLASS
-    //FROM TUTORIAL WEEK 8, LOTS NEEDS TO BE CHANGED TO ADAPT TO A2
+    
     abstract class Database
     {
         private const string db = "kit206";
@@ -86,11 +85,10 @@ namespace A2SDD
             return researchers;
         }
 
-        public static List<Researcher> LoadReseacherDetailsView(Researcher r)
+        public static Researcher LoadReseacherDetailsView(Researcher r)
         {
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
-
 
             try
             {
@@ -98,7 +96,7 @@ namespace A2SDD
 
                 MySqlCommand cmd = new MySqlCommand("select unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start " +
                                                     "from researcher " +
-                                                    "where resercher_id=?id", conn););
+                                                    "where resercher_id=?id", conn);
 
 
 
@@ -107,13 +105,12 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
-                    r.Add()
-                    {
-                        ID = rdr.GetInt32(0),
+                    r.ID = rdr.GetInt32(0);
+
                         GivenName = rdr.GetString(2),
                         FamilyName = rdr.GetString(3),
                         Title = rdr.GetString(4)
-                    });
+                    
                 }
             }
             catch (MySqlException e)

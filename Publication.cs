@@ -23,7 +23,5 @@ namespace A2SDD
 
             return DateTime.Compare(Current, p.Year);
         }
-
-        /// Filter Controler
     }
 }

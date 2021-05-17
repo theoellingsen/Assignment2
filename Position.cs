@@ -10,6 +10,7 @@ namespace A2SDD
         public Level Level { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
